@@ -1,0 +1,26 @@
+===========================================
+Log_dev - Registro de Desenvolvimento
+===========================================
+
+[Log 001 - Data: 23/02/2025]
+Resumo:
+- Início do projeto de processamento de imagens de vídeo de partidas esportivas.
+- Definida a estrutura inicial: interface com tela principal para exibição das imagens e painel lateral para as ferramentas de análise.
+- Estabelecido o uso deste arquivo para registrar cada nova seção de programação, com cabeçalho contendo a data e um número sequencial identificador.
+
+===========================================
+
+[Log 002 - Data: 16/03/2025]
+Resumo:
+1. Correção e otimização do layout da interface
+    - Garantia de que a barra inferior permaneça visível e não seja sobreposta pela barra de ferramentas do Windows.
+    - Ajuste do posicionamento e tamanho dos containers internos na barra lateral.
+    - Implementação correta dos botões de controle do vídeo (Play, Pause, Stop) na barra inferior.
+2. Adicionada a exibição de informações do vídeo na barra lateral (Container 1)
+    - Nome do arquivo (sem caminho e sem extensão).
+    - Duração total do vídeo (em minutos e segundos).
+    - Status do processamento ("Pré-processamento", "Processado", "Exportado").
+    - Ajuste para exibir cada informação em uma única linha, com rótulo e valor na mesma linha.
+3. Correção de erro na atualização das informações do vídeo
+    - Ajuste no video_player.py para referenciar corretamente os labels dentro de ui.py.
+    - Agora, ao carregar um vídeo, as informações do arquivo são exibidas corretamente no painel da barra lateral.

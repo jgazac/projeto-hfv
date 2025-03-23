@@ -9,11 +9,14 @@ class VideoPlayer:
         self.seek_after_id = None
         self.slider_delay_ms = 1500
         self.slider_locked = False  # flag para ignorar update automático
-
+        self.caminho_video = None
+        self.frame_inicio = None  # <-- define frame de início
+        self.frame_fim = None     # <-- define frame de fim
 
     def load_video(self, path):
         """ Carrega um vídeo e atualiza as informações na interface """
         self.cap = cv2.VideoCapture(path)
+        self.caminho_video = path
 
         # Atualiza a interface corretamente
         from os.path import basename, splitext
@@ -141,11 +144,13 @@ class VideoPlayer:
     def marcar_inicio(self):
         frame = int(self.cap.get(cv2.CAP_PROP_POS_FRAMES))
         tempo = self.frame_para_tempo(frame)
+        self.frame_inicio = frame
         self.app.info_inicio.config(text=f"{frame:06} | {tempo}")
 
     def marcar_fim(self):
         frame = int(self.cap.get(cv2.CAP_PROP_POS_FRAMES))
         tempo = self.frame_para_tempo(frame)
+        self.frame_fim = frame
         self.app.info_fim.config(text=f"{frame:06} | {tempo}")
 
 

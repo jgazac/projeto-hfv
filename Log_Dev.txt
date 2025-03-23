@@ -4,8 +4,6 @@ Log_dev - Registro de Desenvolvimento
 
 ===========================================
 
-
-
 [Log 001 - Data: 23/02/2025]
 
 Resumo:
@@ -16,11 +14,7 @@ Resumo:
 
 - Estabelecido o uso deste arquivo para registrar cada nova seção de programação, com cabeçalho contendo a data e um número sequencial identificador.
 
-
-
 ===========================================
-
-
 
 [Log 002 - Data: 16/03/2025]
 
@@ -50,11 +44,7 @@ Resumo:
 
     - Agora, ao carregar um vídeo, as informações do arquivo são exibidas corretamente no painel da barra lateral.
 
-
-
 ===========================================
-
-
 
 [Log 003 - Data: 22/03/2025]
 
@@ -87,3 +77,29 @@ Resumo:
     - Discussão sobre GitHub, autenticação com token e erros corrigidos parcialmente.
     - Finalizada a tentativa de push por hoje; retomaremos na próxima seção.
 
+===========================================
+
+[Log 004 - Data: 06/04/2025 | Início: 11:50 | Término: 15:30]
+
+Resumo:
+
+1. Conclusão da integração Git + GitHub
+   - Correção da rastreabilidade da pasta `outros/`, agora ignorada corretamente pelo `.gitignore`.
+   - Inclusão do manifesto técnico `manifesto.md` no diretório `docs/`, atualizado com base nas seções desenvolvidas até aqui.
+
+2. Implementação da primeira etapa de análise de imagens:
+   - Criação do módulo `segmentador.py` responsável por gerenciar a lógica geral de segmentação.
+   - Criação do módulo `detector_cortes.py` com uso de SSIM para detecção de cortes de câmeras e replays.
+   - Comunicação entre os módulos de análise e a interface via botão "Processar".
+   - Feedback visual do processo na interface, incluindo mensagens de erro e sucesso.
+
+3. Validações e ajustes de interface:
+   - Exibição e atualização correta das marcações de início e fim da análise.
+   - Correção na organização dos containers da interface para manter o layout estável.
+   - Melhoria no sistema de barra de progresso do vídeo, com contadores de frame e tempo organizados em coluna.
+
+4. Verificação completa do repositório no GitHub:
+   - Validação da estrutura e conteúdo das pastas `src/`, `docs/`, `tests/`, `utils/`, `analise/`, `interface/`, `outros/`, `data/`.
+   - Confirmação de versionamento limpo e organizado.
+
+===========================================

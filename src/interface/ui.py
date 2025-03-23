@@ -162,7 +162,8 @@ class VideoApp:
             self.root.update_idletasks()
 
             caminho = self.video_player.caminho_video
-            segmentar_video(caminho)
+            segmentar_video(caminho, self.video_player.frame_inicio, self.video_player.frame_fim)
+
 
             self.info_status.config(text="Processado", fg="green")
             messagebox.showinfo("Concluído", "Segmentação finalizada com sucesso.")

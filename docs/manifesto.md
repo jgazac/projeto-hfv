@@ -10,19 +10,24 @@ Sistema para análise de imagens de partidas esportivas com interface interativa
 projeto-hfv/
 ├── .gitignore
 ├── Log_dev.txt
+├── requirements.txt
 ├── README.md (sugerido futuramente)
-├── outros/                # Documentos auxiliares (ignorada pelo Git)
+├── docs/
+│   └── manifesto.md     # Este documento
+├── outros/              # Documentos auxiliares (ignorada pelo Git)
 ├── src/
-│   ├── main.py           # Ponto de entrada da aplicação
+│   ├── main.py          # Ponto de entrada da aplicação
 │   ├── interface/
-│   │   ├── ui.py         # Interface Tkinter e layout
-│   │   └── video_player.py # Lógica de reprodução de vídeo
+│   │   ├── ui.py            # Interface Tkinter e layout
+│   │   └── video_player.py  # Lógica de reprodução de vídeo
 │   ├── utils/
-│   │   ├── arquivos.py   # Funções de seleção de arquivo
+│   │   ├── arquivos.py      # Funções de seleção de arquivo
 │   │   └── configuracoes.py # Obtenção da altura da taskbar
-│
+│   ├── analise/
+│   │   ├── segmentador.py       # Controla o processo geral de análise
+│   │   └── detector_cortes.py   # Lógica de detecção de cortes na sequência de vídeo
+├── tests/                # Estrutura para testes futuros
 ├── venv/                 # Ambiente virtual (ignorado pelo Git)
-
 
 ---
 
@@ -44,12 +49,21 @@ projeto-hfv/
 - Atualização de frames e sincronia com barra de progresso
 - Suporte a marcação de início/fim do trecho de análise
 - Controle de delay e travamento do slider
+- Integração com os módulos de análise
 
 ### utils/arquivos.py
 - Função `selecionar_video()` para abrir caixa de diálogo de escolha de vídeo.
 
 ### utils/configuracoes.py
 - Função `get_taskbar_height()` para detectar altura da barra de tarefas do Windows, garantindo interface visível.
+
+### analise/segmentador.py
+- Orquestra o processo de segmentação de trechos do vídeo a partir dos frames selecionados pelo usuário.
+- Comunica-se com o detector de cortes e trata mensagens e atualizações na interface.
+
+### analise/detector_cortes.py
+- Realiza análise da continuidade visual entre frames consecutivos.
+- Utiliza métrica SSIM para identificar mudanças abruptas (cortes de câmera ou replays).
 
 ---
 
@@ -61,16 +75,21 @@ projeto-hfv/
 - Contador de frames e tempo (min, seg, milisseg)
 - Botões: play, pause, stop, marcar início e fim
 - Exibição de informações do vídeo na barra lateral
+- Processamento de segmentação acionado via botão "Processar"
+- Detecção de cortes baseada em similaridade entre quadros (SSIM)
+- Caixa de diálogo para feedback do usuário
+- Atualização do status do processamento no painel lateral
 
 ---
 
 ## Diretrizes para as próximas etapas
 
-- Iniciar análise frame a frame (continuidade de imagem)
-- Identificação de ângulos de filmagem com base em padrões visuais
-- Modularizar futuras análises (por objeto, movimento, evento)
-- Otimização com `multiprocessing` para análises pesadas
-- Expansão do painel de informações e funcionalidades de relatório
+- Expandir classificação dos trechos segmentados (ângulos, replays, contextos)
+- Associar tipo de análise ao tipo de trecho (lateral, frontal, replay etc.)
+- Aprimorar interface com filtros de visualização e status dos blocos segmentados
+- Iniciar análises específicas por tipo de câmera (posição, ação, jogadores)
+- Otimização futura com `multiprocessing` para paralelizar tarefas intensivas
+- Avaliar implementação de “projeto salvo” para retomada sem retrabalho
 
 ---
 

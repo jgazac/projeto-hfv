@@ -8,3 +8,6 @@ __pycache__/
 
 # VSCode settings pessoais
 .vscode/
+
+# Ignorar a pasta 'outros'
+.outros/

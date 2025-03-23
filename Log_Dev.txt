@@ -1,26 +1,89 @@
 ===========================================
+
 Log_dev - Registro de Desenvolvimento
+
 ===========================================
+
+
 
 [Log 001 - Data: 23/02/2025]
+
 Resumo:
+
 - Início do projeto de processamento de imagens de vídeo de partidas esportivas.
+
 - Definida a estrutura inicial: interface com tela principal para exibição das imagens e painel lateral para as ferramentas de análise.
+
 - Estabelecido o uso deste arquivo para registrar cada nova seção de programação, com cabeçalho contendo a data e um número sequencial identificador.
+
+
 
 ===========================================
 
+
+
 [Log 002 - Data: 16/03/2025]
+
 Resumo:
+
 1. Correção e otimização do layout da interface
+
     - Garantia de que a barra inferior permaneça visível e não seja sobreposta pela barra de ferramentas do Windows.
+
     - Ajuste do posicionamento e tamanho dos containers internos na barra lateral.
+
     - Implementação correta dos botões de controle do vídeo (Play, Pause, Stop) na barra inferior.
+
 2. Adicionada a exibição de informações do vídeo na barra lateral (Container 1)
+
     - Nome do arquivo (sem caminho e sem extensão).
+
     - Duração total do vídeo (em minutos e segundos).
+
     - Status do processamento ("Pré-processamento", "Processado", "Exportado").
+
     - Ajuste para exibir cada informação em uma única linha, com rótulo e valor na mesma linha.
+
 3. Correção de erro na atualização das informações do vídeo
+
     - Ajuste no video_player.py para referenciar corretamente os labels dentro de ui.py.
+
     - Agora, ao carregar um vídeo, as informações do arquivo são exibidas corretamente no painel da barra lateral.
+
+
+
+===========================================
+
+
+
+[Log 003 - Data: 22/03/2025]
+
+Resumo:
+
+1. Implementada a barra de progresso interativa com botão deslizante:
+
+    - Substituição da ttk.Progressbar por tk.Scale com controle manual do ponto de exibição do vídeo.
+    - Slider responsivo com delay de 1,5 segundos para aplicar alteração de frame após parada do mouse.
+    - Prevenção de travamentos com bloqueio de atualizações durante interação do usuário.
+
+2. Ajuste fino da interação com o slider:
+
+    - Correção do comportamento de "salto fantasmagórico" causado por conflito entre interação do usuário e atualização automática.
+    - Flags de bloqueio (slider_locked) e eventos de press/release implementados.
+
+3. Aprimoramento visual do contador de frames e tempo na barra inferior:
+
+    - Exibição verticalizada do frame atual/total e tempo atual/total abaixo do slider.
+    - Layout ajustado com fontes menores para manter a interface limpa.
+
+4. Inclusão de botões "Início" e "Fim" na barra inferior:
+
+    - Permite marcar os pontos inicial e final do trecho a ser analisado.
+    - Atualiza dinamicamente os valores no painel lateral de informações.
+
+5. Início do versionamento com Git local no VSCode:
+
+    - `git init` executado, arquivos ignorados via `.gitignore`, e primeiro commit realizado.
+    - Discussão sobre GitHub, autenticação com token e erros corrigidos parcialmente.
+    - Finalizada a tentativa de push por hoje; retomaremos na próxima seção.
+

@@ -74,9 +74,19 @@ projeto-hfv/
 
 ---
 
+## Dependências principais
+
+- opencv-python
+- pillow
+- scikit-image
+
+---
+
 ## Observações Finais
 
 - Projeto segue diretrizes de praticidade, modularização e eficiência
 - Todas as bibliotecas não nativas devem estar listadas no `requirements.txt`
 - Projeto desenvolvido exclusivamente em ambiente Windows
 - Registro de progresso contínuo mantido em `Log_dev.txt`
+
+---
